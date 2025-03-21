@@ -1,0 +1,21 @@
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
+import { pluginSass } from '@rsbuild/plugin-sass';
+
+export default defineConfig({
+  plugins: [pluginReact(), pluginSass()],
+  output: {
+    distPath: {
+      root: 'build',
+      image: 'assets',
+      svg: 'assets',
+      font: 'assets',
+      media: 'assets',
+    },
+  },
+  performance: {
+    chunkSplit: {
+      strategy: 'single-vendor',
+    },
+  },
+});

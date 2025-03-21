@@ -1,0 +1,78 @@
+.container-menu {
+    position: absolute;
+    width: 300px;
+    height: 430px;
+    
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 25px;
+
+    &:active {
+        cursor: pointer;
+    }
+
+    .menu-title {
+        padding: 25px 125px;
+        position: relative;
+
+        text-align: center;
+        font-size: 20px;
+        color: white;
+
+        background-color: rgba(148, 138, 138, 0.15);
+        border-radius: 25px 25px 0px 0px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+        box-sizing: border-box;
+
+        .close-menu {
+            position: absolute;
+            top: 22px;
+            left: 245px;
+            padding: 1px 9px 3px;
+
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.25);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .menu-body {
+        width: 100%;
+        
+        .menu-items {
+            height: 280px;
+            overflow-y: auto;
+
+            .menu-item {
+                text-align: left;
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 16px;
+                padding: 20px 25px;
+                
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                box-sizing: border-box;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.15);
+                    color: rgba(255, 255, 255, 1);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0);
+                    box-sizing: border-box;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .menu-footer {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 15px;
+        padding: 26px 0px;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        box-sizing: border-box;
+    }
+}
