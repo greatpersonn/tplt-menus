@@ -40,6 +40,15 @@ const Menu = ({ config, updateConfig }) => {
             </div>
           </div>
         }
+        {
+        config.tabs.length > 0 && <div className="menu-tabs">
+          {
+            config.tabs.map((tab, id) => 
+              <div className="tab" key={id}>{tab.label}</div>
+            )
+          }
+        </div>
+        }
         { config.body.isVisible && <div className="menu-body">
             <ul className="menu-items">
               {config.body.items.map((item, index) => (

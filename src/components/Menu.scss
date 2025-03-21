@@ -1,7 +1,7 @@
 .container-menu {
     position: absolute;
     width: 300px;
-    height: 430px;
+    height: 480px;
     
     background-color: rgba(0, 0, 0, 0.85);
     border-radius: 25px;
@@ -36,6 +36,24 @@
                 background: rgba(255, 255, 255, 0.25);
                 cursor: pointer;
             }
+        }
+    }
+
+    .menu-tabs {
+        padding: 8px 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 5px;
+
+        overflow-y: auto;
+
+        .tab {
+            padding: 5px 10px;
+            border-radius: 11px;
+            background: rgba(148, 138, 138, 0.15);;
+            color: #ffffffbf;
         }
     }
 

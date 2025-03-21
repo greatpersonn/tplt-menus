@@ -7,9 +7,9 @@ const App = () => {
       title: "Menu"
     },
     tabs: [
-      { label: "Tab 1" },
-      { label: "Tab 2" },
-      { label: "Tab 3" }
+      { label: "Основное" },
+      { label: "Дополнительно" },
+      { label: "Администрация" }
     ],
     body: {
       isVisible: true,
@@ -17,7 +17,7 @@ const App = () => {
         { 
           label: "Персонаж",
           content: "Additional content for item 1",
-          isActive: false 
+          isActive: true 
         },
       ]
     },
