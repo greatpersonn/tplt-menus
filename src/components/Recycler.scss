@@ -1,0 +1,118 @@
+.recycler {
+  width: 445px;
+  height: 400px;
+  padding: 25px 20px;
+
+  background: rgba(0, 0, 0, 0.80);
+  border-radius: 20px;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 10px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.07rem;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__section {
+    span {
+      display: block;
+      padding: 10px 5px;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.06rem;
+    }
+  }
+
+  &__footer {
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .footer__title {
+      display: block;
+      padding: 5px 5px;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.06rem;
+    }
+
+    .footer__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+  }
+
+  .slot {
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 20px 10px;
+
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    cursor: pointer;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    &--start {
+      background: rgba(170, 206, 135, 0.35);
+    }
+
+    &--stop {
+      background: rgba(206, 135, 135, 0.35);
+    }
+  }
+
+  &__info {
+    font-size: 0.7rem;
+    color: white;
+    opacity: 0.8;
+  }
+}
