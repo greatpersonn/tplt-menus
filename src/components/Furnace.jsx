@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { ReactComponent as OilIco } from "../assets/images/Oil.svg";
-import { ReactComponent as StateIco } from "../assets/images/Vector.svg";
-import "./OilRig.scss";
+import { ReactComponent as ArrowStepIco } from "../assets/images/ArrowStep.svg";
+import { ReactComponent as StateIco } from "../assets/images/ControlBtn.svg";
+import { ReactComponent as FlameIco } from "../assets/images/Flame.svg";
+import "./Furnace.scss";
 
 const ITEM_TYPE = "ITEM";
 
@@ -35,31 +36,34 @@ const DroppableSlot = ({ index, item, onDrop }) => {
   );
 };
 
-const OilRig = ({ inventory, setInventory }) => {
+const Furnace = ({ inventory, setInventory }) => {
   const [isProcessing, setIsProcessing] = useState(false);
-  const [inputSlots, setInputSlots] = useState(Array(1).fill(null));
+  const [inputSlots, setInputSlots] = useState({
+    fuel: [null], 
+    materials: [null, null], 
+  });
+  
   const [outputSlots, setOutputSlots] = useState(Array(3).fill(null));
 
-  // 🎯 Перемещение предмета в переработчик
-  const handleDropToOilRig = (fromIndex, toIndex) => {
+  const handleDropToFurnace = (fromIndex, toSection, toIndex) => {
     const item = inventory[fromIndex];
-
-    if (item) {
-      setInputSlots((prev) => {
-        const newSlots = [...prev];
-        newSlots[toIndex] = item;
-        return newSlots;
-      });
-
-      setInventory((prev) => {
-        const newInventory = [...prev];
-        newInventory[fromIndex] = null;
-        return newInventory;
-      });
-    }
+  
+    if (!item) return;
+  
+    setInputSlots((prev) => {
+      const newSlots = { ...prev };
+      newSlots[toSection][toIndex] = item;
+      return newSlots;
+    });
+  
+    setInventory((prev) => {
+      const newInventory = [...prev];
+      newInventory[fromIndex] = null;
+      return newInventory;
+    });
   };
+  
 
-  // 🎯 Забираем обработанные предметы
   const handleDropToInventory = (fromIndex, toIndex) => {
     const item = outputSlots[fromIndex];
 
@@ -78,7 +82,6 @@ const OilRig = ({ inventory, setInventory }) => {
     }
   };
 
-  // 🎯 Запускаем переработку
   const handleProcess = () => {
     setIsProcessing(!isProcessing);
 
@@ -92,22 +95,47 @@ const OilRig = ({ inventory, setInventory }) => {
   };
 
   return (
-    <div className="oiler">
-      <span className="oiler__title">
-        <OilIco />
-        Нефтевышка
+    <div className="furnace">
+      <span className="furnace__title">
+        <FlameIco />
+        Печь
       </span>
 
-      <div className="oiler__section">
-        <span>Входящие</span>
+      <div className="furnace__section">
+        <span>Топливо</span>
         <div className="slots">
-          {inputSlots.map((item, index) => (
-            <DroppableSlot key={index} index={index} item={item} onDrop={handleDropToOilRig} />
+          <DroppableSlot 
+            index={0} 
+            item={inputSlots.fuel[0]} 
+            onDrop={(fromIndex) => handleDropToFurnace(fromIndex, "fuel", 0)} 
+          />
+        </div>
+      </div>
+
+      <div className="furnace__svg">
+        <ArrowStepIco />
+      </div>
+      
+      <div className="furnace__section">
+        <span>Сырьё</span>
+        <div className="slots">
+          {inputSlots.materials.map((item, index) => (
+            <DroppableSlot 
+              key={index} 
+              index={index} 
+              item={item} 
+              onDrop={(fromIndex) => handleDropToFurnace(fromIndex, "materials", index)} 
+            />
           ))}
         </div>
       </div>
 
-      <div className="oiler__section">
+      <div className="furnace__svg">
+        <ArrowStepIco />
+        <ArrowStepIco />
+      </div>
+
+      <div className="furnace__section">
         <span>Результат</span>
         <div className="slots">
           {outputSlots.map((item, index) => (
@@ -116,22 +144,22 @@ const OilRig = ({ inventory, setInventory }) => {
         </div>
       </div>
 
-      <div className="oiler__footer">
+      <div className="furnace__footer">
         <div className="footer__title">Управление</div>
         <div className="footer__content">
           <button
-            className={`oiler__button ${
-              isProcessing ? "oiler__button--stop" : "oiler__button--start"
+            className={`furnace__button ${
+              isProcessing ? "furnace__button--stop" : "furnace__button--start"
             }`}
             onClick={handleProcess}
           >
             <StateIco /> {isProcessing ? "Остановить" : "Запустить"}
           </button>
 
-          <span className="oiler__info">
-            Убедитесь, что нефтевышка загружена необходимым топлевом в слоте. 
-            Только после этого начнётся переработка, 
-            и готовые материалы появятся в выходных слотах.
+          <span className="furnace__info">
+          Убедитесь, что в печь загружено топливо и обрабатываемые предметы. 
+          Топливо помещается в верхний слот, а обрабатываемые предметы – в средний. 
+          Готовый результат появится в выходном слоте.
           </span>
         </div>
       </div>
@@ -139,4 +167,4 @@ const OilRig = ({ inventory, setInventory }) => {
   );
 };
 
-export default OilRig;
+export default Furnace;
