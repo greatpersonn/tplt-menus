@@ -10,6 +10,8 @@
     "axios": "^1.7.9",
     "lucide-react": "^0.469.0",
     "react": "^19.0.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.0.0",
     "react-draggable": "^4.4.6",
     "web-vitals": "^2.1.0"

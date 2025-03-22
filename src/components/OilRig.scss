@@ -1,4 +1,4 @@
-.recycler {
+.oiler {
   width: 445px;
   height: 400px;
   padding: 25px 20px;
@@ -75,10 +75,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: grab;
+  
+    &:hover {
+      border: 1px dashed white;
+      box-sizing: border-box;
+    }
   }
 
   &__button {
-    width: 100%;
+    width: 80%;
     padding: 20px 10px;
 
     font-size: 1rem;
@@ -111,6 +117,7 @@
   }
 
   &__info {
+    width: 150%;
     font-size: 0.7rem;
     color: white;
     opacity: 0.8;
